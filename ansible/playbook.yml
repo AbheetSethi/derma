@@ -19,9 +19,10 @@
     - name: Deploy backend
       kubernetes.core.k8s:
         state: present
-        src: k8s/backend-deployment.yaml
+        src: /tmp/backend-deployment.yaml
         kubeconfig: ~/.kube/config
         verify_ssl: false
+
         
     # - name: Deploy backend
     #   kubernetes.core.k8s:
