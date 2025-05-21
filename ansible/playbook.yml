@@ -16,13 +16,19 @@
         src: manifests/backend-deployment.yaml.j2
         dest: /tmp/backend-deployment.yaml
 
+    # - name: Deploy backend
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: /tmp/backend-deployment.yaml
+    #     kubeconfig: ~/.kube/config
+    #     verify_ssl: false
+
     - name: Deploy backend
       kubernetes.core.k8s:
         state: present
         src: /tmp/backend-deployment.yaml
-        kubeconfig: ~/.kube/config
+        kubeconfig: /var/lib/jenkins/.kube/config
         verify_ssl: false
-
         
     # - name: Deploy backend
     #   kubernetes.core.k8s:
