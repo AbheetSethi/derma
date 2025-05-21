@@ -9,9 +9,15 @@ COPY . /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
     libgl1-mesa-glx \
+    build-essential \
+    python3-dev \ 
+    libffi-dev \ 
+    python3-cffi \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --force-reinstall --no-cache-dir cffi cryptography google-auth kubernetes
 
 # Copy the requirements.txt and install Python dependencies
 COPY requirements.txt /app/
